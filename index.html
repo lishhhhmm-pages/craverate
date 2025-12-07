@@ -1,1 +1,926 @@
-craverate
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>craverate | Discover Food Your Way</title>
+    <style>
+        :root {
+            --primary: #FF4757;
+            --secondary: #2F3542;
+            --accent: #FFA502;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+            --text-light: #6c757d;
+            --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--secondary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Language Toggle */
+        .lang-gr { display: none; }
+        .lang-en { display: inline; }
+        body.greek-active .lang-en { display: none !important; }
+        body.greek-active .lang-gr { display: inline !important; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-switch {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            border-radius: 100px;
+            padding: .5rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            font-family: Courier, 'Courier New', monospace;
+        }
+
+        .lang-switch:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 71, 87, 0.4);
+        }
+
+        .btn-insta {
+            background: var(--insta-gradient);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+            padding: 14px 32px;
+            font-size: 16px;
+        }
+
+        .btn-insta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(220, 39, 67, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 71, 87, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 58px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            width: 320px;
+            height: 650px;
+            background: #1a1a1a;
+            border-radius: 45px;
+            padding: 12px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80') center/cover;
+            border-radius: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-toggle {
+            position: absolute;
+            top: 50px;
+            left: 16px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 10px 16px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch {
+            width: 40px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: 0.3s;
+        }
+
+        .toggle-switch.active::after {
+            left: 22px;
+        }
+
+        .mode-toggle span {
+            transition: opacity 0.3s;
+        }
+
+        .mode-toggle span.inactive {
+            opacity: 0.5;
+        }
+
+        /* Map View Styles */
+        .map-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s, visibility 0.4s;
+            border-radius: 35px;
+            overflow: hidden;
+        }
+        
+        .map-view canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .map-view.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: markerPop 0.5s ease;
+        }
+
+        @keyframes markerPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .map-marker::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid white;
+        }
+
+        .map-marker:nth-child(2) {
+            top: 30%;
+            left: 25%;
+            animation-delay: 0.1s;
+        }
+
+        .map-marker:nth-child(3) {
+            top: 50%;
+            left: 60%;
+            animation-delay: 0.2s;
+        }
+
+        .map-marker:nth-child(4) {
+            top: 70%;
+            left: 35%;
+            animation-delay: 0.3s;
+        }
+
+        .user-location {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: #FF4757;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 5;
+        }
+
+        .user-location::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 71, 87, 0.3);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        .app-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 40%, transparent);
+            padding: 30px 20px;
+            color: white;
+        }
+
+        .app-overlay h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .app-overlay p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        .rating {
+            display: flex;
+            gap: 4px;
+            font-size: 16px;
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: var(--text-light);
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            flex: 1 1 320px;
+            max-width: 380px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: inline-flex;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
+            border-radius: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Split Section */
+        .split-section {
+            background: var(--light);
+        }
+
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .split-content.reverse {
+            direction: rtl;
+        }
+
+        .split-content.reverse > * {
+            direction: ltr;
+        }
+
+        .split-text .label {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .split-text h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .split-text p {
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .split-text .link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .split-text .link:hover {
+            gap: 12px;
+        }
+
+        .split-image {
+            height: 500px;
+            border-radius: 24px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 120px 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+                padding: 60px 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .split-content.reverse {
+                direction: ltr;
+            }
+
+            .split-image {
+                height: 400px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+
+            .split-text h2 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 60px 30px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .phone-mockup {
+                width: 280px;
+                height: 570px;
+            }
+
+            .cta-section h2 {
+                font-size: 36px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">craverate</div>
+            <div class="nav-right">
+                <a href="https://instagram.com/craverate_" target="_blank" class="btn btn-primary">
+                    <span class="lang-en">STAY TUNED</span>
+                    <span class="lang-gr">ΕΝΗΜΕΡΩΣΟΥ</span>
+                </a>
+                <button class="lang-switch" onclick="toggleLanguage()">
+                    <span class="lang-en">GR</span>
+                    <span class="lang-gr">EN</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    <span class="lang-en">Don't just read reviews. <span class="highlight">Taste them.</span></span>
+                    <span class="lang-gr">Μην διαβάζεις απλά κριτικές.<br><span class="highlight">Γεύσου τις.</span></span>
+                </h1>
+                <p>
+                    <span class="lang-en">The food discovery app that combines immersive video scrolling with map-based exploration. See exactly what you're getting before you go.</span>
+                    <span class="lang-gr">Η εφαρμογή ανακάλυψης φαγητού που συνδυάζει video scroll και χάρτη. Δες ακριβώς τι θα φας πριν πας.</span>
+                </p>
+                <a href="#follow" class="btn btn-primary">
+                    <span class="lang-en">FOLLOW OUR JOURNEY</span>
+                    <span class="lang-gr">ΑΚΟΛΟΥΘΗΣΕ ΜΑΣ</span>
+                </a>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="mode-toggle">
+                            <span id="scrollLabel">Scroll</span>
+                            <div class="toggle-switch" id="modeToggle" onclick="toggleMode()"></div>
+                            <span id="mapLabel" class="inactive">Map</span>
+                        </div>
+                        <div class="app-overlay">
+                            <h3>Double Cheese Smash</h3>
+                            <p>🍔 Burger Joint • 0.2km away</p>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="map-view" id="mapView">
+                            <canvas id="mapCanvas"></canvas>
+                            <div class="user-location"></div>
+                            <div class="map-marker">🍔</div>
+                            <div class="map-marker">🍕</div>
+                            <div class="map-marker">☕</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>
+                    <span class="lang-en">Why craverate?</span>
+                    <span class="lang-gr">Γιατί craverate;</span>
+                </h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎥</div>
+                    <h3>
+                        <span class="lang-en">Optical Mandatory</span>
+                        <span class="lang-gr">Υποχρεωτικά Οπτικό</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">No more vague text reviews. Every review requires a photo or video. Authenticity you can see and trust.</span>
+                        <span class="lang-gr">Όχι πια αόριστες κριτικές. Κάθε κριτική απαιτεί φωτογραφία ή βίντεο. Αυθεντικότητα που φαίνεται.</span>
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>
+                        <span class="lang-en">Scroll or Map</span>
+                        <span class="lang-gr">Scroll ή Χάρτης</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">In the mood for fun? Scroll the feed. Hungry now? Switch to Map Mode to find top-rated eats nearby instantly.</span>
+                        <span class="lang-gr">Θες να χαζέψεις; Scroll στο feed. Πεινάς τώρα; Άνοιξε τον Χάρτη και βρες τα καλύτερα κοντά σου.</span>
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔖</div>
+                    <h3>
+                        <span class="lang-en">Social Lists</span>
+                        <span class="lang-gr">Λίστες & Κοινότητα</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">Create "Date Night Spots" or "Best Tacos" lists. Keep them private or share with friends. You're the curator.</span>
+                        <span class="lang-gr">Φτιάξε λίστες για "Date Night" ή "Καλύτερα Burger". Κράτα τες ιδιωτικές ή μοιράσου τες με φίλους.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <section class="split-section">
+        <div class="container">
+            <div class="split-content">
+                <div class="split-text">
+                    <span class="label">
+                         <span class="lang-en">Real Reviews</span>
+    <span class="lang-gr">Αληθινές Κριτικές</span>
+                    </span>
+                    <h2>
+                     <span class="lang-en">See Before You Go</span>
+    <span class="lang-gr">Δες Πριν Πας</span>
+                    </h2>
+                    <p>
+    <span class="lang-en">Users upload real photos and videos of their meals. Browse reviews and decide where and what to eat based on what you actually see.</span>
+    <span class="lang-gr">Οι χρήστες ανεβάζουν αληθινές φωτογραφίες και βίντεο από τα γεύματά τους. Δες κριτικές και αποφάσισε πού και τι θα φας, βασισμένος σε ό,τι ακριβώς βλέπεις.</span>
+</p>
+                </div>
+                <div class="split-image" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-section" style="background: var(--white);">
+        <div class="container">
+            <div class="split-content reverse">
+                <div class="split-text">
+                    <span class="label">
+                        <span class="lang-en">Curate & Share</span>
+                        <span class="lang-gr">Μοιράσου τη Γεύση</span>
+                    </span>
+                    <h2>
+                        <span class="lang-en">Make It Your Menu</span>
+                        <span class="lang-gr">Φτιάξε το Μενού σου</span>
+                    </h2>
+                    <p>
+                        <span class="lang-en">Save your favorite reviews into custom lists. Whether it's "Must Visit 2024" or "Late Night Snacks," you become the curator for your crew.</span>
+                        <span class="lang-gr">Αποθήκευσε τις αγαπημένες σου κριτικές σε λίστες. Γίνε ο ειδικός της παρέας για "Must Visit 2024" ή "Βραδινό Φαγητό".</span>
+                    </p>
+                </div>
+                <div class="split-image" style="background-image: url('https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-section">
+        <div class="container">
+            <div class="split-content">
+                <div class="split-text">
+                    <span class="label">
+                        <span class="lang-en">For Business Owners</span>
+                        <span class="lang-gr">Για Επαγγελματίες</span>
+                    </span>
+                    <h2>
+                        <span class="lang-en">Claim Your Business</span>
+                        <span class="lang-gr">Αναδείξτε την Επιχείρησή σας</span>
+                    </h2>
+                    <p>
+                        <span class="lang-en">Business owners can claim their profile to upload official high-quality content. Your videos sit alongside user reviews, giving customers the complete picture.</span>
+                        <span class="lang-gr">Οι ιδιοκτήτες επιχειρήσεων μπορούν να "διεκδικήσουν" το προφίλ τους και να ανεβάσουν επίσημο περιεχόμενο. Τα βίντεό σας εμφανίζονται δίπλα στις κριτικές των χρηστών.</span>
+                    </p>
+                    <a href="mailto:business@craverate.app" class="link">
+                        <span class="lang-en">Partner with us →</span>
+                        <span class="lang-gr">Συνεργαστείτε μαζί μας →</span>
+                    </a>
+                </div>
+                <div class="split-image" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="follow" class="cta-section">
+        <div class="container">
+            <h2>
+                <span class="lang-en">See what we're cooking up 🍳</span>
+                <span class="lang-gr">Δες τι μαγειρεύουμε 🍳</span>
+            </h2>
+            <a href="https://instagram.com/craverate_" target="_blank" class="btn btn-insta">
+                <svg class="btn-icon" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span class="lang-en">FOLLOW ON INSTAGRAM</span>
+                <span class="lang-gr">ΑΚΟΛΟΥΘΗΣΕ ΣΤΟ INSTAGRAM</span>
+            </a>
+            <footer>
+                <p>&copy; 2025 craverate Inc. All rights reserved.</p>
+            </footer>
+        </div>
+    </section>
+
+    <script>
+        function toggleLanguage() {
+            document.body.classList.toggle('greek-active');
+        }
+
+        function toggleMode() {
+            const toggle = document.getElementById('modeToggle');
+            const mapView = document.getElementById('mapView');
+            const scrollLabel = document.getElementById('scrollLabel');
+            const mapLabel = document.getElementById('mapLabel');
+
+            toggle.classList.toggle('active');
+            mapView.classList.toggle('active');
+
+            if (toggle.classList.contains('active')) {
+                scrollLabel.classList.add('inactive');
+                mapLabel.classList.remove('inactive');
+            } else {
+                scrollLabel.classList.remove('inactive');
+                mapLabel.classList.add('inactive');
+            }
+        }
+
+        // Load OSM tiles for Athens, Greece
+        function loadMap() {
+            const canvas = document.getElementById('mapCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas to match container size
+            const container = canvas.parentElement;
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+            
+            // Athens coordinates: 37.9838°N, 23.7275°E
+            const lat = 37.9838;
+            const lon = 23.7275;
+            const zoom = 14;
+            
+            // Convert lat/lon to tile coordinates
+            const n = Math.pow(2, zoom);
+            const xtile = Math.floor((lon + 180) / 360 * n);
+            const ytile = Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * n);
+            
+            // Calculate how many tiles we need to fill the canvas
+            const tilesX = Math.ceil(canvas.width / 256) + 1;
+            const tilesY = Math.ceil(canvas.height / 256) + 1;
+            
+            // Load tiles
+            for (let dx = -1; dx < tilesX; dx++) {
+                for (let dy = -1; dy < tilesY; dy++) {
+                    const img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.onload = function() {
+                        ctx.drawImage(img, dx * 256, dy * 256, 256, 256);
+                    };
+                    img.onerror = function() {
+                        console.log('Failed to load tile');
+                    };
+                    img.src = `https://tile.openstreetmap.org/${zoom}/${xtile + dx}/${ytile + dy}.png`;
+                }
+            }
+        }
+
+        // Initialize map on page load
+        window.addEventListener('DOMContentLoaded', loadMap);
+
+        // Auto-toggle demo every 4 seconds
+        setInterval(() => {
+            toggleMode();
+        }, 4000);
+    </script>
+</body>
+</html>
