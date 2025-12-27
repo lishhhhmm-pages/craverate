@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,10 +36,21 @@
         }
 
         /* Language Toggle */
-        .lang-gr { display: none; }
-        .lang-en { display: inline; }
-        body.greek-active .lang-en { display: none !important; }
-        body.greek-active .lang-gr { display: inline !important; }
+        .lang-gr {
+            display: none;
+        }
+
+        .lang-en {
+            display: inline;
+        }
+
+        body.greek-active .lang-en {
+            display: none !important;
+        }
+
+        body.greek-active .lang-gr {
+            display: inline !important;
+        }
 
         /* Header */
         header {
@@ -276,7 +288,7 @@
             border-radius: 35px;
             overflow: hidden;
         }
-        
+
         .map-view canvas {
             width: 100%;
             height: 100%;
@@ -303,9 +315,17 @@
         }
 
         @keyframes markerPop {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .map-marker::after {
@@ -365,8 +385,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
         }
 
         .app-overlay {
@@ -488,7 +517,7 @@
             direction: rtl;
         }
 
-        .split-content.reverse > * {
+        .split-content.reverse>* {
             direction: ltr;
         }
 
@@ -653,11 +682,16 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <div class="logo">craverate</div>
             <div class="nav-right">
+                <a href="https://demo.app.craverate.gr/" target="_blank" class="btn btn-primary">
+                    <span class="lang-en">DEMO</span>
+                    <span class="lang-gr">DEMO</span>
+                </a>
                 <a href="https://instagram.com/craverate_" target="_blank" class="btn btn-primary">
                     <span class="lang-en">STAY TUNED</span>
                     <span class="lang-gr">ΕΝΗΜΕΡΩΣΟΥ</span>
@@ -675,16 +709,25 @@
             <div class="hero-content">
                 <h1>
                     <span class="lang-en">Don't just read reviews. <span class="highlight">Taste them.</span></span>
-                    <span class="lang-gr">Μην διαβάζεις απλά κριτικές.<br><span class="highlight">Γεύσου τις.</span></span>
+                    <span class="lang-gr">Μην διαβάζεις απλά κριτικές.<br><span class="highlight">Γεύσου
+                            τις.</span></span>
                 </h1>
                 <p>
-                    <span class="lang-en">The food discovery app that combines immersive video scrolling with map-based exploration. See exactly what you're getting before you go.</span>
-                    <span class="lang-gr">Η εφαρμογή ανακάλυψης φαγητού που συνδυάζει video scroll και χάρτη. Δες ακριβώς τι θα φας πριν πας.</span>
+                    <span class="lang-en">The food discovery app that combines immersive video scrolling with map-based
+                        exploration. See exactly what you're getting before you go.</span>
+                    <span class="lang-gr">Η εφαρμογή ανακάλυψης φαγητού που συνδυάζει video scroll και χάρτη. Δες
+                        ακριβώς τι θα φας πριν πας.</span>
                 </p>
-                <a href="#follow" class="btn btn-primary">
-                    <span class="lang-en">FOLLOW OUR JOURNEY</span>
-                    <span class="lang-gr">ΑΚΟΛΟΥΘΗΣΕ ΜΑΣ</span>
-                </a>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="https://demo.app.craverate.gr/" target="_blank" class="btn btn-primary">
+                        <span class="lang-en">DEMO</span>
+                        <span class="lang-gr">DEMO</span>
+                    </a>
+                    <a href="#follow" class="btn btn-primary">
+                        <span class="lang-en">FOLLOW OUR JOURNEY</span>
+                        <span class="lang-gr">ΑΚΟΛΟΥΘΗΣΕ ΜΑΣ</span>
+                    </a>
+                </div>
             </div>
             <div class="hero-visual">
                 <div class="phone-mockup">
@@ -728,8 +771,10 @@
                         <span class="lang-gr">Υποχρεωτικά Οπτικό</span>
                     </h3>
                     <p>
-                        <span class="lang-en">No more vague text reviews. Every review requires a photo or video. Authenticity you can see and trust.</span>
-                        <span class="lang-gr">Όχι πια αόριστες κριτικές. Κάθε κριτική απαιτεί φωτογραφία ή βίντεο. Αυθεντικότητα που φαίνεται.</span>
+                        <span class="lang-en">No more vague text reviews. Every review requires a photo or video.
+                            Authenticity you can see and trust.</span>
+                        <span class="lang-gr">Όχι πια αόριστες κριτικές. Κάθε κριτική απαιτεί φωτογραφία ή βίντεο.
+                            Αυθεντικότητα που φαίνεται.</span>
                     </p>
                 </div>
                 <div class="feature-card">
@@ -739,8 +784,10 @@
                         <span class="lang-gr">Scroll ή Χάρτης</span>
                     </h3>
                     <p>
-                        <span class="lang-en">In the mood for fun? Scroll the feed. Hungry now? Switch to Map Mode to find top-rated eats nearby instantly.</span>
-                        <span class="lang-gr">Θες να χαζέψεις; Scroll στο feed. Πεινάς τώρα; Άνοιξε τον Χάρτη και βρες τα καλύτερα κοντά σου.</span>
+                        <span class="lang-en">In the mood for fun? Scroll the feed. Hungry now? Switch to Map Mode to
+                            find top-rated eats nearby instantly.</span>
+                        <span class="lang-gr">Θες να χαζέψεις; Scroll στο feed. Πεινάς τώρα; Άνοιξε τον Χάρτη και βρες
+                            τα καλύτερα κοντά σου.</span>
                     </p>
                 </div>
                 <div class="feature-card">
@@ -750,32 +797,38 @@
                         <span class="lang-gr">Λίστες & Κοινότητα</span>
                     </h3>
                     <p>
-                        <span class="lang-en">Create "Date Night Spots" or "Best Tacos" lists. Keep them private or share with friends. You're the curator.</span>
-                        <span class="lang-gr">Φτιάξε λίστες για "Date Night" ή "Καλύτερα Burger". Κράτα τες ιδιωτικές ή μοιράσου τες με φίλους.</span>
+                        <span class="lang-en">Create "Date Night Spots" or "Best Tacos" lists. Keep them private or
+                            share with friends. You're the curator.</span>
+                        <span class="lang-gr">Φτιάξε λίστες για "Date Night" ή "Καλύτερα Burger". Κράτα τες ιδιωτικές ή
+                            μοιράσου τες με φίλους.</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-  <section class="split-section">
+    <section class="split-section">
         <div class="container">
             <div class="split-content">
                 <div class="split-text">
                     <span class="label">
-                         <span class="lang-en">Real Reviews</span>
-    <span class="lang-gr">Αληθινές Κριτικές</span>
+                        <span class="lang-en">Real Reviews</span>
+                        <span class="lang-gr">Αληθινές Κριτικές</span>
                     </span>
                     <h2>
-                     <span class="lang-en">See Before You Go</span>
-    <span class="lang-gr">Δες Πριν Πας</span>
+                        <span class="lang-en">See Before You Go</span>
+                        <span class="lang-gr">Δες Πριν Πας</span>
                     </h2>
                     <p>
-    <span class="lang-en">Users upload real photos and videos of their meals. Browse reviews and decide where and what to eat based on what you actually see.</span>
-    <span class="lang-gr">Οι χρήστες ανεβάζουν αληθινές φωτογραφίες και βίντεο από τα γεύματά τους. Δες κριτικές και αποφάσισε πού και τι θα φας, βασισμένος σε ό,τι ακριβώς βλέπεις.</span>
-</p>
+                        <span class="lang-en">Users upload real photos and videos of their meals. Browse reviews and
+                            decide where and what to eat based on what you actually see.</span>
+                        <span class="lang-gr">Οι χρήστες ανεβάζουν αληθινές φωτογραφίες και βίντεο από τα γεύματά τους.
+                            Δες κριτικές και αποφάσισε πού και τι θα φας, βασισμένος σε ό,τι ακριβώς βλέπεις.</span>
+                    </p>
                 </div>
-                <div class="split-image" style="background-image: url('https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg');"></div>
+                <div class="split-image"
+                    style="background-image: url('https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg');">
+                </div>
             </div>
         </div>
     </section>
@@ -793,11 +846,15 @@
                         <span class="lang-gr">Φτιάξε το Μενού σου</span>
                     </h2>
                     <p>
-                        <span class="lang-en">Save your favorite reviews into custom lists. Whether it's "Must Visit 2024" or "Late Night Snacks," you become the curator for your crew.</span>
-                        <span class="lang-gr">Αποθήκευσε τις αγαπημένες σου κριτικές σε λίστες. Γίνε ο ειδικός της παρέας για "Must Visit 2024" ή "Βραδινό Φαγητό".</span>
+                        <span class="lang-en">Save your favorite reviews into custom lists. Whether it's "Must Visit
+                            2024" or "Late Night Snacks," you become the curator for your crew.</span>
+                        <span class="lang-gr">Αποθήκευσε τις αγαπημένες σου κριτικές σε λίστες. Γίνε ο ειδικός της
+                            παρέας για "Must Visit 2024" ή "Βραδινό Φαγητό".</span>
                     </p>
                 </div>
-                <div class="split-image" style="background-image: url('https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg');"></div>
+                <div class="split-image"
+                    style="background-image: url('https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg');">
+                </div>
             </div>
         </div>
     </section>
@@ -815,15 +872,21 @@
                         <span class="lang-gr">Αναδείξτε την Επιχείρησή σας</span>
                     </h2>
                     <p>
-                        <span class="lang-en">Business owners can claim their profile to upload official high-quality content. Your videos sit alongside user reviews, giving customers the complete picture.</span>
-                        <span class="lang-gr">Οι ιδιοκτήτες επιχειρήσεων μπορούν να "διεκδικήσουν" το προφίλ τους και να ανεβάσουν επίσημο περιεχόμενο. Τα βίντεό σας εμφανίζονται δίπλα στις κριτικές των χρηστών.</span>
+                        <span class="lang-en">Business owners can claim their profile to upload official high-quality
+                            content. Your videos sit alongside user reviews, giving customers the complete
+                            picture.</span>
+                        <span class="lang-gr">Οι ιδιοκτήτες επιχειρήσεων μπορούν να "διεκδικήσουν" το προφίλ τους και να
+                            ανεβάσουν επίσημο περιεχόμενο. Τα βίντεό σας εμφανίζονται δίπλα στις κριτικές των
+                            χρηστών.</span>
                     </p>
                     <a href="https://instagram.com/craverate_" target="_blank" class="link">
                         <span class="lang-en">Partner with us →</span>
                         <span class="lang-gr">Συνεργαστείτε μαζί μας →</span>
                     </a>
                 </div>
-                <div class="split-image" style="background-image: url('https://images.pexels.com/photos/3887985/pexels-photo-3887985.jpeg');"></div>
+                <div class="split-image"
+                    style="background-image: url('https://images.pexels.com/photos/3887985/pexels-photo-3887985.jpeg');">
+                </div>
             </div>
         </div>
     </section>
@@ -838,7 +901,8 @@
             </h2>
             <a href="https://instagram.com/craverate_" target="_blank" class="btn btn-insta">
                 <svg class="btn-icon" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
                 <span class="lang-en">FOLLOW ON INSTAGRAM</span>
                 <span class="lang-gr">ΑΚΟΛΟΥΘΗΣΕ ΣΤΟ INSTAGRAM</span>
@@ -876,35 +940,35 @@
         function loadMap() {
             const canvas = document.getElementById('mapCanvas');
             const ctx = canvas.getContext('2d');
-            
+
             // Set canvas to match container size
             const container = canvas.parentElement;
             canvas.width = container.offsetWidth;
             canvas.height = container.offsetHeight;
-            
+
             // Athens coordinates: 37.9838°N, 23.7275°E
             const lat = 37.9838;
             const lon = 23.7275;
             const zoom = 14;
-            
+
             // Convert lat/lon to tile coordinates
             const n = Math.pow(2, zoom);
             const xtile = Math.floor((lon + 180) / 360 * n);
             const ytile = Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * n);
-            
+
             // Calculate how many tiles we need to fill the canvas
             const tilesX = Math.ceil(canvas.width / 256) + 1;
             const tilesY = Math.ceil(canvas.height / 256) + 1;
-            
+
             // Load tiles
             for (let dx = -1; dx < tilesX; dx++) {
                 for (let dy = -1; dy < tilesY; dy++) {
                     const img = new Image();
                     img.crossOrigin = 'anonymous';
-                    img.onload = function() {
+                    img.onload = function () {
                         ctx.drawImage(img, dx * 256, dy * 256, 256, 256);
                     };
-                    img.onerror = function() {
+                    img.onerror = function () {
                         console.log('Failed to load tile');
                     };
                     img.src = `https://tile.openstreetmap.org/${zoom}/${xtile + dx}/${ytile + dy}.png`;
@@ -921,4 +985,5 @@
         }, 4000);
     </script>
 </body>
+
 </html>
